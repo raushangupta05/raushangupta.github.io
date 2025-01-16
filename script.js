@@ -1,5 +1,17 @@
-// Basic JavaScript for interactivity (if needed)
 document.addEventListener('DOMContentLoaded', function() {
-    // You can add any JavaScript functionality here if needed
-    console.log('Portfolio website loaded!');
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    // Observe all sections
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+    });
 });
